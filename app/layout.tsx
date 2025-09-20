@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Elite Catering - Premium Event Catering Services",
+  title: "Apis Kitchenette",
   description:
     "Professional catering services for weddings, corporate events, and special occasions. Exceptional cuisine and impeccable service.",
   generator: "v0.app",
