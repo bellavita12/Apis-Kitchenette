@@ -1,0 +1,313 @@
+"use client"
+
+import { useState } from "react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+
+/** ---- Types ---- */
+type MenuItem = {
+  name: string
+  description: string
+  image: string
+  dietary: string[]
+  popular?: boolean
+}
+
+type Category = { id: string; name: string; icon: string }
+type MenuMap = Record<string, MenuItem[]>
+
+/** ---- Component ---- */
+export function MenuSection() {
+  const [activeCategory, setActiveCategory] = useState<string>("pakistani")
+
+  const categories: Category[] = [
+    { id: "pakistani", name: "Pakistani Specials", icon: "🍛" },
+    { id: "asian", name: "Asian Cuisines", icon: "🥢" },
+    { id: "fastfood", name: "Fast Food & Snacks", icon: "🍔" },
+    { id: "bbq", name: "Live BBQ & Cooking", icon: "🔥" },
+    { id: "desserts", name: "Desserts", icon: "🍰" },
+    { id: "daigs", name: "Daigs & Events", icon: "🍲" },
+    { id: "frozen", name: "Frozen Items", icon: "❄️" },
+  ]
+
+  const menuItems: MenuMap = {
+    pakistani: [
+      {
+        name: "Chicken Karahi",
+        description:
+          "Traditional Pakistani chicken karahi with fresh tomatoes, ginger, and aromatic spices",
+        image: "/placeholder-3gtoe.png",
+        dietary: ["Halal", "Spicy"],
+        popular: true,
+      },
+      {
+        name: "Mutton Biryani",
+        description: "Fragrant basmati rice layered with tender mutton and traditional spices",
+        image: "/placeholder-bs6pn.png",
+        dietary: ["Halal", "Premium"],
+      },
+      {
+        name: "Daal Chawal",
+        description: "Comfort food combination of lentil curry with steamed basmati rice",
+        image: "/placeholder-f5td4.png",
+        dietary: ["Vegetarian", "Healthy"],
+      },
+    ],
+    asian: [
+      {
+        name: "Chinese Fried Rice",
+        description: "Wok-tossed rice with vegetables, eggs, and choice of chicken or beef",
+        image: "/placeholder-qfxub.png",
+        dietary: ["Asian Fusion"],
+        popular: true,
+      },
+      {
+        name: "Chicken Shashlik with Rice",
+        description:
+          "Juicy chicken cubes cooked with vegetables in tangy sauce, served with fried rice",
+        image: "/placeholder-2ad5d.png",
+        dietary: ["Halal", "Tangy", "Fusion"],
+      },
+      {
+        name: "Mutton Champ",
+        description: "Tender mutton chops marinated in spices and grilled to perfection",
+        image: "/placeholder-wn975.png",
+        dietary: ["Grilled", "Halal", "Premium"],
+      },
+    ],
+    fastfood: [
+      {
+        name: "Gourmet Burgers",
+        description: "Juicy beef or chicken burgers with fresh toppings and crispy fries",
+        image: "/gourmet-burger-fries.png",
+        dietary: ["Fast Food"],
+        popular: true,
+      },
+      {
+        name: "Crispy Chicken Wings",
+        description: "Golden fried chicken wings with variety of sauces and dips",
+        image: "/placeholder-wbfwy.png",
+        dietary: ["Fried", "Spicy Options"],
+      },
+      {
+        name: "Loaded Nachos",
+        description: "Crispy tortilla chips loaded with cheese, jalapeños, and toppings",
+        image: "/loaded-nachos.png",
+        dietary: ["Vegetarian Option", "Shareable"],
+      },
+    ],
+    bbq: [
+      {
+        name: "Live BBQ Station",
+        description: "Fresh grilled kebabs, tikkas, and steaks prepared live at your event",
+        image: "/placeholder-85984.png",
+        dietary: ["Halal", "Fresh Grilled"],
+        popular: true,
+      },
+      {
+        name: "Seekh Kebab Platter",
+        description: "Handmade seekh kebabs grilled to perfection with naan and chutney",
+        image: "/placeholder-c91yg.png",
+        dietary: ["Halal", "Traditional"],
+      },
+      {
+        name: "Mixed Grill Station",
+        description:
+          "Variety of grilled meats including chicken tikka, beef boti, and lamb chops",
+        image: "/placeholder-x70my.png",
+        dietary: ["Halal", "Premium"],
+      },
+    ],
+    desserts: [
+      {
+        name: "Gulab Jamun",
+        description: "Traditional Pakistani sweet dumplings in rose-flavored syrup",
+        image: "/placeholder-yeqbq.png",
+        dietary: ["Vegetarian", "Traditional"],
+        popular: true,
+      },
+      {
+        name: "Kheer & Rice Pudding",
+        description: "Creamy rice pudding with cardamom, nuts, and rose petals",
+        image: "/placeholder-6yjkl.png",
+        dietary: ["Vegetarian", "Creamy"],
+      },
+      {
+        name: "Fruit Trifle",
+        description:
+          "Layers of sponge cake, custard, cream, and seasonal fruits for a delightful treat",
+        image: "/placeholder-ttdpv.png",
+        dietary: ["Sweet", "Halal"],
+      },
+    ],
+    daigs: [
+      {
+        name: "Wedding Daig Service",
+        description: "Traditional large-scale cooking in daigs for weddings and celebrations",
+        image: "/placeholder-crhfh.png",
+        dietary: ["Traditional", "Bulk Cooking"],
+        popular: true,
+      },
+      {
+        name: "Islamic Event Catering",
+        description:
+          "Special arrangements for Eid, Ramadan Iftars, and religious gatherings",
+        image: "/placeholder-02v9t.png",
+        dietary: ["Halal", "Religious Events"],
+      },
+      {
+        name: "Community Feast Daigs",
+        description:
+          "Large daig preparations for community events and charity functions",
+        image: "/placeholder-02v9t.png",
+        dietary: ["Community", "Charitable"],
+      },
+    ],
+    frozen: [
+      {
+        name: "Frozen Samosas",
+        description:
+          "Ready-to-fry crispy samosas with chicken, beef, or vegetable fillings",
+        image: "/placeholder-frozen1.png",
+        dietary: ["Frozen Snacks"],
+      },
+      {
+        name: "Spring Rolls",
+        description: "Crispy golden spring rolls filled with fresh vegetables and spices",
+        image: "/placeholder-frozen2.png",
+        dietary: ["Quick Meal"],
+      },
+      {
+        name: "Frozen Kababs",
+        description:
+          "Seekh kebabs and shami kebabs, perfectly seasoned and ready to heat",
+        image: "/placeholder-frozen3.png",
+        dietary: ["Halal", "Frozen"],
+      },
+    ],
+  }
+
+  const whatsappLink = "https://wa.me/923226812281"
+
+  const openWhatsApp = (message?: string) => {
+    if (message) {
+      const url = `${whatsappLink}?text=${encodeURIComponent(message)}`
+      window.open(url, "_blank")
+    } else {
+      window.open(whatsappLink, "_blank")
+    }
+  }
+
+  // ensure we always get an array for the active category
+  const items: MenuItem[] = menuItems[activeCategory] ?? []
+
+  return (
+    <section id="menu" className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        {/* Heading */}
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[var(--font-space-grotesk)] text-primary">
+            Our Diverse Menu
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            From fast food to snacks, desserts to live BBQ cooking stations, Asian cuisines to Pakistani specials.
+            We also provide daigs and frozen items for Islamic or private events according to your need and budget.
+          </p>
+        </div>
+
+        {/* Category Tabs: wrap neatly (no scrollbar) */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up animate-delay-200">
+          {categories.map((category) => (
+            <Button
+              key={category.id}
+              variant={activeCategory === category.id ? "default" : "outline"}
+              size="lg"
+              onClick={() => setActiveCategory(category.id)}
+              className={`text-lg px-6 py-3 hover-lift whitespace-nowrap transition-all ${
+                activeCategory === category.id
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "hover:bg-primary/10 hover:text-primary"
+              }`}
+            >
+              <span className="mr-2">{category.icon}</span>
+              {category.name}
+            </Button>
+          ))}
+        </div>
+
+        {/* Menu Items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {items.map((item, index) => (
+            <Card
+              key={item.name}
+              className="group hover-lift animate-scale-in border-border bg-card overflow-hidden"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={item.image || "/placeholder.svg"}
+                  alt={item.name}
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                {item.popular ? (
+                  <Badge className="absolute top-4 left-4 bg-secondary text-secondary-foreground animate-bounce-in">
+                    Popular Choice
+                  </Badge>
+                ) : null}
+              </div>
+
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2 font-[var(--font-space-grotesk)] group-hover:text-primary transition-colors duration-300">
+                  {item.name}
+                </h3>
+
+                <p className="text-muted-foreground mb-4 leading-relaxed">{item.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {item.dietary.map((diet) => (
+                    <Badge key={diet} variant="outline" className="text-xs border-primary/20 text-primary">
+                      {diet}
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-semibold text-secondary">For more details</span>
+                  <Button
+                    size="sm"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground hover-glow"
+                    onClick={() =>
+                      openWhatsApp(`Hello, I would like to order "${item.name}". Please share price & availability.`)
+                    }
+                  >
+                    Order Now
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Custom Menu Section */}
+        <div className="text-center mt-12 animate-fade-in-up animate-delay-400">
+          <p className="text-muted-foreground mb-4">
+            Need custom menu planning? We create personalized menus for any event size and budget. <br />
+            For more menu options, contact us on WhatsApp.
+          </p>
+          <Button
+            size="lg"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground hover-glow"
+            onClick={() =>
+              openWhatsApp(
+                "Hello Apis Kitchenette, I need custom menu planning for an event — please share options and pricing."
+              )
+            }
+          >
+            Contact Us for Custom Menu Planning
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}

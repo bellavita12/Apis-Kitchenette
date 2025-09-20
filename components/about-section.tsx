@@ -1,0 +1,111 @@
+"use client"
+
+import { Card, CardContent } from "@/components/ui/card"
+import { Calendar, Users, Award, Clock } from "lucide-react"
+
+export function AboutSection() {
+  const stats = [
+    {
+      icon: Calendar,
+      number: "2016",
+      label: "Established",
+      description: "Years of trusted service",
+    },
+    {
+      icon: Users,
+      number: "5000+",
+      label: "Daily Capacity",
+      description: "People served at once",
+    },
+    {
+      icon: Award,
+      number: "100%",
+      label: "Fresh & Hygienic",
+      description: "Quality guarantee",
+    },
+    {
+      icon: Clock,
+      number: "24/7",
+      label: "On-Time Service",
+      description: "Reliable delivery",
+    },
+  ]
+
+  return (
+    <section id="about" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-[var(--font-space-grotesk)] text-[#822527]">
+            About Apis Kitchenette
+          </h2>
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            Established in 2016, Apis Kitchenette specializes in large-scale catering services. We take pride in serving
+            nutritious and delicious meals to thousands of people daily across corporate offices, charities,
+            foundations, factories, and special events.
+          </p>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {stats.map((stat, index) => (
+            <Card
+              key={stat.label}
+              className="text-center hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <CardContent className="p-8">
+                <div className="p-4 bg-[#822527]/10 rounded-full w-fit mx-auto mb-4">
+                  <stat.icon className="w-8 h-8 text-[#822527]" />
+                </div>
+                <h3 className="text-3xl font-bold text-[#822527] mb-2">{stat.number}</h3>
+                <p className="font-semibold mb-2 text-[#822527]">{stat.label}</p>
+                <p className="text-sm text-gray-600">{stat.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Who We Serve */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-in-up">
+            <h3 className="text-3xl font-bold mb-6 font-[var(--font-space-grotesk)] text-[#822527]">Who We Serve</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-xl font-semibold mb-3 text-[#822527]">Foundations & Charities</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Sundus Foundation</li>
+                  <li>• Old Age Homes</li>
+                  <li>• Synergy Care</li>
+                  <li>• Riaz Mansoor Trust</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-xl font-semibold mb-3 text-[#822527]">Corporate & Multinational Companies</h4>
+                <p className="text-gray-700">Providing daily meal services to leading offices across Lahore</p>
+              </div>
+              <div>
+                <h4 className="text-xl font-semibold mb-3 text-[#822527]">Factories & Events</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Daily meals for 5–5,000 employees</li>
+                  <li>• Customized office lunch plans</li>
+                  <li>• Factory meals with hygienic packaging</li>
+                  <li>• Special daigs for events and charity</li>
+                  <li>• Weddings and family gatherings</li>
+                  <li>• Community events and celebrations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="animate-fade-in-up animate-delay-200">
+            <img
+              src="/professional-kitchen-staff-preparing-large-quantit.jpg"
+              alt="Apis Kitchenette kitchen operations"
+              className="rounded-lg shadow-lg w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
