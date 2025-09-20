@@ -26,7 +26,6 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
-        {/* Heading */}
         <motion.h1
           className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 text-white"
           initial={{ opacity: 0, y: 40 }}
@@ -36,7 +35,6 @@ export function HeroSection() {
           Apis Kitchenette
         </motion.h1>
 
-        {/* Tagline */}
         <motion.p
           className="text-sm sm:text-lg md:text-2xl mb-10 text-white font-semibold"
           initial={{ opacity: 0, y: 20 }}
@@ -46,23 +44,25 @@ export function HeroSection() {
           Luxury Catering Excellence
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
           className="flex flex-col sm:flex-row gap-6 justify-center w-full px-4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
         >
+          {/* Monthly Menu PDF Button */}
           <Button
-            size="sm"
-            className="bg-white text-[#822527] hover:bg-[#822527] hover:text-white text-base sm:text-lg px-6 py-3 sm:px-10 sm:py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-            onClick={() => window.open("https://wa.me/923226812281", "_blank")}
+            size="lg"
+            className="bg-white text-[#822527] hover:bg-[#822527] hover:text-white text-lg sm:text-base px-8 sm:px-10 py-3 sm:py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+            onClick={() => window.open("/monthly_menu.pdf", "_blank")}
           >
-            Call Now
+            Monthly Menu
           </Button>
+
+          {/* Foodpanda Button */}
           <Button
-            size="sm"
-            className="bg-white/80 text-[#822527] hover:bg-[#822527] hover:text-white text-base sm:text-lg px-6 py-3 sm:px-10 sm:py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+            size="lg"
+            className="bg-white/80 text-[#822527] hover:bg-[#822527] hover:text-white text-lg sm:text-base px-8 sm:px-10 py-3 sm:py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             onClick={() =>
               window.open(
                 "https://www.foodpanda.pk/restaurant/c724/apis-kitchenette",
